@@ -32,8 +32,7 @@ const SignInPage = async() => {
             const {email, password} = parsed.data;
             //Login user
             const {user, error} = await loginUser(email, password);
-            console.log(user)
-            console.log(error)
+           
             if(error){
                 return{
                     message:error,

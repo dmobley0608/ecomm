@@ -137,7 +137,7 @@ export const registerUser = async (email: string, name:string, password: string)
         });
 		const safeUser = {...user, passwordHash:undefined};
         return {user:safeUser, error:null};
-    }catch(e){
+    }catch(){
         return {
             user:null,
             error: "Failed to register user"
@@ -154,10 +154,10 @@ export const loginUser = async (email: string, password: string) => {
     if(user === null){
         return {
             user: null,
-            error: "No user found"
+            error: "Invalid Credentials"
         }
     }
-	console.log(password, user.passwordHash);
+
     const isValid = await verifyPassword(password, user.passwordHash);
     if(!isValid){
         return {

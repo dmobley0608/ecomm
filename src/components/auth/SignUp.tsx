@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useActionState } from "react";
+import React, { useActionState, useState } from "react";
 import Form from "next/form";
 import { Loader2 } from "lucide-react";
 
@@ -10,10 +10,13 @@ const initialState = {
 
 type SignUpProps = {
   action: (prevState: any, formData: FormData) => Promise<{ message: string } | undefined>;
+
 };
 
 const SignUp = ({ action }: SignUpProps) => {
   const [state, formAction, isPending] = useActionState(action, initialState);
+
+
 
   return (
     <Form action={formAction} className="max-w-md mx-auto bg-white rounded-lg shadow-md p-8 my-16">
@@ -25,7 +28,7 @@ const SignUp = ({ action }: SignUpProps) => {
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Name
           </label>
-          <input type="text" name="name" id="name" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-rose-500 focus:border-rose-500 sm:text-sm" />
+          <input  type="text" name="name" id="name" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-rose-500 focus:border-rose-500 sm:text-sm" />
         </div>
         <div className="space-y-2">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">

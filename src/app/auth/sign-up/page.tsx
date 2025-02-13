@@ -1,6 +1,7 @@
 
 import { getCurrentSession, loginUser, registerUser } from '@/actions/auth'
 import SignUp from '@/components/auth/SignUp';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import React from 'react'
 import zod from 'zod'
@@ -13,6 +14,7 @@ const SignUpSchema = zod.object({
     });
 
 const SignUpPage = async () => {
+    const cookieStore = await cookies();
     //Check for current user
     const {user} = await getCurrentSession();
     //Redirect to home if user is already logged in
@@ -32,7 +34,8 @@ const SignUpPage = async () => {
         }
         //Extract form data
         const {email, password, confirmPassword, name} = parsed.data;
-     
+        //Store form data in cookies
+
 
         //Check if passwords match
         if(password !== confirmPassword){
@@ -50,14 +53,15 @@ const SignUpPage = async () => {
             //Login user
             await loginUser(email, password);
             //Redirect to home
+            (await cookies()).delete("signUpFormData");
             return redirect("/");
         }
 
     }
 
+    const formData = JSON.parse(cookieStore.get('signUpFormData')?.value ?? '{}');
 
-
-  return    <SignUp action={action} />
+  return    <SignUp action={action}/>
 };
 
 export default SignUpPage
