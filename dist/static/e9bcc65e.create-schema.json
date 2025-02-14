@@ -1,0 +1,105 @@
+[
+  {
+    "fields": [
+      {
+        "name": "code",
+        "type": "string"
+      },
+      {
+        "name": "discount",
+        "type": "number"
+      },
+      {
+        "name": "expirationDate",
+        "type": "date"
+      }
+    ],
+    "name": "promotionCodes",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "to": [
+          {
+            "type": "promotionCodes"
+          }
+        ],
+        "name": "code",
+        "type": "reference"
+      }
+    ],
+    "name": "promotionCampaign",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "options": {
+          "source": "title"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      }
+    ],
+    "name": "productCategory",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "name": "price",
+        "type": "number"
+      },
+      {
+        "to": [
+          {
+            "type": "productCategory"
+          }
+        ],
+        "name": "category",
+        "type": "reference"
+      },
+      {
+        "name": "image",
+        "type": "image"
+      }
+    ],
+    "name": "product",
+    "type": "document"
+  }
+]

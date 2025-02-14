@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useActionState, useState } from "react";
+import React, { useActionState} from "react";
 import Form from "next/form";
 import { Loader2 } from "lucide-react";
 
@@ -9,7 +9,7 @@ const initialState = {
 };
 
 type SignUpProps = {
-  action: (prevState: any, formData: FormData) => Promise<{ message: string } | undefined>;
+  action: (prevState:any, formData: FormData) => Promise<{ message: string } | undefined>;
 
 };
 

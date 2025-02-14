@@ -22,7 +22,7 @@ const SignUpPage = async () => {
         return redirect("/");
     }
     //Action for registering user
-    const action = async (prevState: any, formData:FormData) => {
+    const action = async (prevState:any, formData:FormData) => {
         "use server"
         //Check Form Data
         const parsed = SignUpSchema.safeParse(Object.fromEntries(formData));
@@ -59,7 +59,7 @@ const SignUpPage = async () => {
 
     }
 
-    const formData = JSON.parse(cookieStore.get('signUpFormData')?.value ?? '{}');
+
 
   return    <SignUp action={action}/>
 };

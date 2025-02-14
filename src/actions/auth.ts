@@ -137,7 +137,8 @@ export const registerUser = async (email: string, name:string, password: string)
         });
 		const safeUser = {...user, passwordHash:undefined};
         return {user:safeUser, error:null};
-    }catch(){
+    }catch(e){
+		console.log(e)
         return {
             user:null,
             error: "Failed to register user"
