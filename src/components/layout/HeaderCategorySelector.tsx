@@ -17,7 +17,7 @@ const HeaderCategorySelector = async () => {
           <div className="py-2">
             {categories.map((category) => (
               <Link
-              key={categories._id}
+              key={category._id}
               href={`/category/${category.slug?.current}`}
                className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-100"
                prefetch

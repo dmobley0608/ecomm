@@ -1,22 +1,19 @@
-import { getCurrentSession } from '@/actions/auth';
-import SalesCampaignBanner from '@/components/layout/SalesCampaignBanner';
-import ProductGrid from '@/components/product/ProductGrid';
-import { getAllProducts } from '@/sanity/lib/client';
-import { urlFor } from '@/sanity/lib/image';
-import React from 'react'
+import SalesCampaignBanner from "@/components/layout/SalesCampaignBanner";
+import ProductGrid from "@/components/product/ProductGrid";
+import { getAllProducts } from "@/sanity/lib/client";
+import React from "react";
 
-const page = async() => {
+const page = async () => {
   const products = await getAllProducts();
   return (
+    <div>
+      <SalesCampaignBanner />
 
-     <div>
-      <SalesCampaignBanner/>
-
-      <section className='container mx-auto py-8'>
-        <ProductGrid products={products}/>
+      <section className="container mx-auto py-8">
+        <ProductGrid products={products} />
       </section>
-     </div>
-  )
-}
+    </div>
+  );
+};
 
-export default page
+export default page;

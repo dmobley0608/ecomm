@@ -1,6 +1,7 @@
 import { Product } from "@/*";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type ProductItemProps = {
@@ -29,7 +30,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
         <div className="text-sm text-green-500 font-semibold mb-2">
           🔥  {100 + Math.abs(product._id.split("").reduce((acc, char)=> acc + char.charCodeAt(0),0) % 500)} + SOLD
         </div>
-        <button className="w-full bg-gradient-to-tr from-red-500 to-orange-500 text-white py-2 rounded full text-sm font:bold hover:brightness-110 transition-all">GRAB IT NOW</button>
+        <Link href={`/product/${product._id}`} className="w-full bg-gradient-to-tr from-red-500 to-orange-500 text-white py-2 px-4 rounded full text-sm font:bold hover:brightness-110 transition-all">GRAB IT NOW</Link>
         <div className="text-xs text-red-500 text-center mt-1 animate-pulse">⚡ Limited Time Offer! ⚡</div>
       </div>
     </div>
